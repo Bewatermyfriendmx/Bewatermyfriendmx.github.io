@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="BE WATER - Sabiduría en Una Gota. Impacto social a través de cada compra.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>BE WATER — Sabiduría en Una Gota | Ángel Muñoz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #0a0a0a;
+            --light: #ffffff;
+            --grey: #8a8a8a;
+            --gold: #d4af37;
+            --gold-dark: #b8941f;
+            --marble-light: rgba(255, 255, 255, 0.015);
+            --marble-med: rgba(255, 255, 255, 0.03);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000000;
+            color: var(--light);
+            line-height: 1.8;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Fondo con imágenes dinámicas */
+        .background-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+        }
+
+        .background-section.cascada {
+            background-image: url('https://images.pexels.com/photos/1619656/pexels-photo-1619656.jpeg?auto=compress&cs=tinysrgb&w=1920');
+        }
+
+        .background-section.rio {
+            background-image: url('https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1920');
+        }
+
+        .background-section.montanas {
+            background-image: url('https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=1920');
+        }
+
+        /* Overlay oscuro */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.008) 50%, transparent 100%),
+                radial-gradient(circle at 20% 50%, rgba(45, 90, 123, 0.03) 0%, transparent 50%);
+            opacity: 1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            padding: 100px 0 60px;
+            text-align: center;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            animation: pulseAura 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseAura {
+            0%, 100% { 
+                box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.2);
+            }
+            50% { 
+                box-shadow: inset 0 0 60px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        .b-water-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            animation: logoFloat 4s ease-in-out infinite, logoGlow 3s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { 
+                transform: translateY(0px) scale(1);
+            }
+            50% { 
+                transform: translateY(-18px) scale(1.08);
+            }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% {
+                filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.4));
+            }
+            50% {
+                filter: drop-shadow(0 20px 50px rgba(212, 175, 55, 0.7));
+            }
+        }
+
+        .message {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--light);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            position: relative;
+            text-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .message::before {
+            content: '✦';
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .submessage {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 0 3px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .divider {
+            width: 140px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            animation: expandDivider 1s ease-out;
+        }
+
+        @keyframes expandDivider {
+            from { width: 0; }
+            to { width: 140px; }
+        }
+
+        .brand-name {
+            margin-top: 30px;
+            font-size: 2.8rem;
+            color: var(--gold);
+            letter-spacing: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+            animation: brandGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes brandGlow {
+            0%, 100% { 
+                text-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+            }
+            50% { 
+                text-shadow: 0 8px 35px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        .brand-name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            opacity: 0.6;
+        }
+
+        /* ===== IMPACT SECTION ===== */
+        .impact-section {
+            padding: 80px 0;
+            animation: fadeInUp 1.2s ease-out 0.2s backwards;
+        }
+
+        .impact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .impact-card {
+            background: 
+                linear-gradient(135deg, var(--marble-light) 0%, var(--marble-med) 50%, var(--marble-light) 100%),
+                rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 60px;
+            border-radius: 4px;
+            backdrop-filter: blur(15px);
+            margin: 0 auto 30px;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .impact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 20%, rgba(45, 90, 123, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .impact-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 50px 100px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .impact-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .impact-card p {
+            font-size: 1.1rem;
+            color: var(--light);
+            line-height: 2;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .impact-card strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ===== BOOKS SECTION ===== */
+        .books-section {
+            padding: 100px 0;
+            animation: fadeInUp 1.3s ease-out 0.3s backwards;
+        }
+
+        .books-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .book-card {
+            background: 
+                linear-gradient(135deg, var(--marble-light) 0%, var(--marble-med) 50%, var(--marble-light) 100%),
+                rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 50px;
+            border-radius: 4px;
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .book-card:nth-child(1) { animation-delay: 0.3s; }
+        .book-card:nth-child(2) { animation-delay: 0.4s; }
+
+        .book-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-15px);
+            box-shadow: 0 30px 70px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+
+        .book-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .book-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .book-author {
+            font-size: 0.95rem;
+            color: var(--grey);
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .book-card p {
+            font-size: 1rem;
+            color: var(--light);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .book-highlight {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== GALLERY SECTION ===== */
+        .text-with-image {
+            margin: 35px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .text-with-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            float: left;
+            margin: 0 20px 20px 0;
+            transition: all 0.4s ease;
+        }
+
+        .text-with-image:nth-child(3) img {
+            float: right;
+            margin: 0 0 20px 20px;
+        }
+
+        .text-with-image:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 15px 45px rgba(212, 175, 55, 0.25);
+        }
+
+        .text-with-image div {
+            position: relative;
+            z-index: 1;
+        }
+
+        .text-with-image p {
+            font-size: 1.1rem;
+            color: var(--light);
+            line-height: 2;
+            margin: 0 0 20px 0;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            padding: 100px 0;
+            animation: fadeInUp 1.4s ease-out 0.4s backwards;
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .contact-box {
+            background: 
+                linear-gradient(135deg, var(--marble-light) 0%, var(--marble-med) 50%, var(--marble-light) 100%),
+                rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 60px;
+            border-radius: 4px;
+            backdrop-filter: blur(15px);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(45, 90, 123, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .contact-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-box p {
+            font-size: 1.1rem;
+            color: var(--light);
+            line-height: 2;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .submit-btn {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.35);
+        }
+
+        /* ===== INSTAGRAM SECTION ===== */
+        .instagram-section {
+            padding: 80px 0;
+            text-align: center;
+            animation: fadeInUp 1.5s ease-out 0.5s backwards;
+        }
+
+        .instagram-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 50px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .connect-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: 
+                linear-gradient(135deg, var(--marble-light) 0%, var(--marble-med) 50%, var(--marble-light) 100%),
+                rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 60px;
+            border-radius: 4px;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .connect-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .connect-box p {
+            font-size: 1.1rem;
+            color: var(--light);
+            margin-bottom: 20px;
+            line-height: 1.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .connect-box .emphasis {
+            color: var(--gold);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .instagram-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin: 40px 0;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.6s ease-out 0.6s backwards;
+        }
+
+        .instagram-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .instagram-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(102, 126, 234, 0.5);
+        }
+
+        .instagram-button:hover::before {
+            left: 0;
+        }
+
+        .instagram-username {
+            color: var(--gold) !important;
+            font-size: 1.5rem !important;
+            letter-spacing: 2px !important;
+            margin-top: 30px !important;
+            font-weight: 700 !important;
+            animation: fadeInUp 1.7s ease-out 0.7s backwards;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 80px 0 60px;
+            color: var(--grey);
+            font-size: 1rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            margin-top: 120px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            margin: 15px 0;
+        }
+
+        .footer-accent {
+            color: var(--gold);
+            opacity: 0.8;
+        }
+
+        footer strong {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 50px 0 30px;
+            }
+
+            .message {
+                font-size: 2rem;
+            }
+
+            .submessage {
+                font-size: 0.9rem;
+            }
+
+            .brand-name {
+                font-size: 1.6rem;
+                letter-spacing: 3px;
+            }
+
+            .impact-section {
+                padding: 60px 0;
+            }
+
+            .impact-card {
+                padding: 35px 25px;
+            }
+
+            .impact-card h2 {
+                font-size: 1.6rem;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .book-card {
+                padding: 30px 20px;
+            }
+
+            .contact-box {
+                padding: 35px 25px;
+            }
+
+            .contact-box h2 {
+                font-size: 1.6rem;
+            }
+
+            .connect-box {
+                padding: 35px 25px;
+            }
+
+            .instagram-button {
+                font-size: 1rem;
+                padding: 15px 30px;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .message {
+                font-size: 1.8rem;
+            }
+
+            .brand-name {
+                font-size: 1.4rem;
+            }
+
+            .impact-card {
+                padding: 25px 15px;
+            }
+
+            .contact-box {
+                padding: 25px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Backgrounds dinámicos -->
+    <div class="background-section cascada"></div>
+    <div class="background-section rio" style="display: none;"></div>
+    <div class="background-section montanas" style="display: none;"></div>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo-container">
+                <svg class="b-water-logo" viewBox="0 0 250 250">
+                    <path d="M 125 20 Q 85 65 85 110 Q 85 165 125 200 Q 165 165 165 110 Q 165 65 125 20 Z" 
+                          fill="none" stroke="#d4af37" stroke-width="2.5" opacity="0.9"/>
+                    <path d="M 125 100 Q 100 125 100 145 Q 100 175 125 195 Q 150 175 150 145 Q 150 125 125 100 Z" 
+                          fill="#d4af37" opacity="0.2"/>
+                    <circle cx="125" cy="85" r="12" fill="#d4af37" opacity="0.9"/>
+                    <ellipse cx="125" cy="115" rx="16" ry="22" fill="#d4af37" opacity="0.7"/>
+                    <circle cx="115" cy="125" r="5" fill="#d4af37" opacity="0.8"/>
+                    <circle cx="135" cy="125" r="5" fill="#d4af37" opacity="0.8"/>
+                    <circle cx="125" cy="85" r="28" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.5"/>
+                    <circle cx="125" cy="85" r="40" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.3"/>
+                    <path d="M 85 200 Q 105 195 125 200 Q 145 205 165 200" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.6"/>
+                </svg>
+            </div>
+            
+            <div class="message">BE WATER</div>
+            <p class="submessage">Sabiduría en Una Gota</p>
+            <div class="divider"></div>
+            <p class="brand-name">Ángel Muñoz</p>
+        </header>
+
+        <!-- IMPACT SECTION -->
+        <section class="impact-section">
+            <h2 class="impact-title">Tu Compra = Impacto Real</h2>
+
+            <div class="impact-card">
+                <h2>De Cada Botella, Algo Más que Agua</h2>
+                <p>
+                    Esta botella de BE WATER cuesta <strong>$10 pesos.</strong> 
+                    Pero tu compra no es solo hidratación. <strong>De esos $10, aproximadamente $2 van destinados a obra de caridad.</strong>
+                </p>
+
+                <div class="text-with-image">
+                    <img src="615536656_18412125178184110_8724358485899933265_n.jpg" alt="Impacto Social">
+                    <div>
+                        <p>
+                            Sí, leíste bien. <strong>Cada compra es un acto de impacto social.</strong> Esos $2 pesos se destinan a 
+                            <strong>ayudar a personas necesitadas, apoyar educación, impulsar comunidades.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-with-image">
+                    <div>
+                        <p>
+                            <strong>¿La evidencia? Está en mis redes sociales.</strong> Una vez que hayamos recaudado una cantidad razonable 
+                            (cuando sume suficientes botellas vendidas), publicaré TODA la evidencia: dónde fue cada peso, a quién ayudamos, 
+                            qué transformamos.
+                        </p>
+                    </div>
+                    <img src="Inversio_n-de-Impacto-en-las-Fundaciones-Nueva-vi_a-para-abordar-los-problemas-sociales.jpg" alt="Mundo">
+                </div>
+
+                <p>
+                    No es promesa vacía. Es compromiso. Es transparencia. <em>Cuando confías en mí con tu dinero, 
+                    tienes derecho a saber exactamente a dónde fue.</em>
+                </p>
+                <p style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(212, 175, 55, 0.3); font-size: 1.15rem; color: var(--gold);">
+                    <strong>⬇️ Al final de esta página encontrarás un espacio especial donde puedes compartir información 
+                    sobre tu fundación u organización si deseas colaborar con nosotros. ⬇️</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact-section">
+            <h2 class="contact-title">¿Conoces Una Fundación?</h2>
+
+            <div class="contact-box">
+                <h2>Escribeme Aquí</h2>
+                <p>
+                    Si conoces una fundación u organización que necesite apoyo, o si tienes alguna propuesta de colaboración,
+                    <strong>ponte en contacto conmigo a través de este formulario.</strong> Revisaré cada mensaje personalmente.
+                </p>
+
+                <form id="contactForm" onsubmit="enviarEmail(event)">
+                    <div class="form-group">
+                        <label for="nombre">Tu Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email de Contacto</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono (opcional)</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+52 XXX XXX XXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fundacion">Nombre de la Fundación/Organización</label>
+                        <input type="text" id="fundacion" name="fundacion" placeholder="Ej: Fundación ABC" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mision">¿A Quién Ayuda tu Organización?</label>
+                        <input type="text" id="mision" name="mision" placeholder="Ej: Niños en situación de calle, educación, salud, etc." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Tu Mensaje / Propuesta</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu fundación y por qué crees que podemos colaborar..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Enviar Propuesta</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- INSTAGRAM SECTION -->
+        <section class="instagram-section">
+            <h2 class="instagram-title">Conecta Conmigo</h2>
+
+            <div class="connect-box">
+                <p>
+                    Sígueme en Instagram. Aquí comparto <strong>sabiduría, meditaciones, reflexiones budistas, 
+                    filosofía oriental y herramientas prácticas para transformar tu vida.</strong>
+                </p>
+                <p class="emphasis">
+                    Tu compra de BE WATER financia cada contenido que creo. Estás invirtiendo en consciencia, en valores, en el futuro.
+                </p>
+
+                <a href="https://www.instagram.com/angelillo.com.mx?igsh=MXd0MTRrMmo0emVraw==" target="_blank" class="instagram-button">
+                    <span style="font-size: 1.5rem; margin-right: 10px;">📱</span>
+                    SÍGUEME EN INSTAGRAM
+                    <span style="font-size: 1.5rem; margin-left: 10px;">→</span>
+                </a>
+
+                <p class="instagram-username">@angelillo.com.mx</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p><span class="footer-accent">═══════════════════════════════════════════</span></p>
+            <p><strong>BE WATER</strong> — Por Ángel Muñoz</p>
+            <p style="margin-top: 20px; font-size: 0.95rem;">Sabiduría en Una Gota • Impacto Social • Transparencia Total</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function enviarEmail(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value || 'No proporcionado';
+            const fundacion = document.getElementById('fundacion').value;
+            const mision = document.getElementById('mision').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            // Crear mensaje para enviar
+            const asunto = `Nueva Propuesta de Colaboración - ${fundacion}`;
+            const cuerpo = `
+Nombre: ${nombre}
+Email: ${email}
+Teléfono: ${telefono}
+Fundación: ${fundacion}
+¿A quién ayuda?: ${mision}
+
+Mensaje:
+${mensaje}
+            `;
+
+            // Usar mailto como fallback
+            const mailtoLink = `mailto:angel.lopez201202@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+            
+            // Si falla el mailto, mostrar instrucciones
+            try {
+                window.location.href = mailtoLink;
+                setTimeout(() => {
+                    alert('✅ Se abrirá tu cliente de correo. Si no se abre, copia este enlace y envíalo manualmente.');
+                    document.getElementById('contactForm').reset();
+                }, 500);
+            } catch(error) {
+                alert('Por favor, abre tu cliente de correo y envía los datos a: angel.lopez201202@gmail.com\n\nTus datos han sido guardados en el formulario.');
+            }
+        }
+
+        // Scroll reveal effect
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function reveal() {
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                } else {
+                    reveals[i].classList.remove('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // Cambiar fondos dinámicamente según scroll
+        window.addEventListener('scroll', () => {
+            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            
+            const cascada = document.querySelectorAll('.background-section')[0];
+            const rio = document.querySelectorAll('.background-section')[1];
+            const montanas = document.querySelectorAll('.background-section')[2];
+
+            if (scrollPercentage < 33) {
+                cascada.style.display = 'block';
+                rio.style.display = 'none';
+                montanas.style.display = 'none';
+            } else if (scrollPercentage < 66) {
+                cascada.style.display = 'none';
+                rio.style.display = 'block';
+                montanas.style.display = 'none';
+            } else {
+                cascada.style.display = 'none';
+                rio.style.display = 'none';
+                montanas.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
