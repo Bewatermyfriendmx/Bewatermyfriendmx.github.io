@@ -3,36 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>BE WATER</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add your CSS here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header {
+            background: #002D72;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .animation {
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .impact-section, .books-section, .contact-form, .instagram-section, .footer {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>BE WATER</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>Your content about the BE WATER website goes here.</p>
-        </section>
-        <section id="services">
-            <h2>Our Services</h2>
-            <p>Details about services offered.</p>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Contact information goes here.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 BE WATER. All rights reserved.</p>
-    </footer>
+    <div class="header">
+        <img src="logo.png" alt="BE WATER Logo">
+        <h1>Welcome to BE WATER</h1>
+    </div>
+    <div class="impact-section animation">
+        <h2>Our Impact</h2>
+        <p>Details about our impact...</p>
+    </div>
+    <div class="books-section animation">
+        <h2>Books</h2>
+        <p>List of books...</p>
+    </div>
+    <div class="contact-form animation">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <div class="instagram-section animation">
+        <h2>Follow Us on Instagram</h2>
+        <p>@bewater</p>
+    </div>
+    <div class="footer animation">
+        <p>&copy; 2026 BE WATER. All Rights Reserved.</p>
+    </div>
 </body>
 </html>
